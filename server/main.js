@@ -14,7 +14,6 @@ const listeDeCours = [
   { sigle: "MTH1102", credits: 2 },
 ];
 
-
 app.get("/obtenirCours", function (req, res) {
   res.send(listeDeCours);
 });
@@ -30,21 +29,21 @@ app.post("/ajouterCours", urlencodedParser, function (req, res) {
   if (!req.body) return res.sendStatus(400);
   const cours = { sigle: req.body.sigle, credits: parseInt(req.body.credits) };
   listeDeCours.push(cours);
-  res.send(cours.sigle + " a été ajouté");
+  res.status(201).send(cours.sigle + " a été ajouté");
 });
 
 app.delete("/supprimerCours/:sigle", function (req, res) {
   const taille = listeDeCours.length;
   listeDeCours = listeDeCours.filter((c) => c.sigle !== req.params.sigle);
   if (taille > listeDeCours.length) res.send("Cours supprimé.");
-  else res.send("Echec de suppression");
+  else res.status(400).send("Echec de suppression : cours introuvable dans la liste");
 });
 
 app.patch("/modifierCours/", urlencodedParser, function (req, res) {
   const cours = listeDeCours.find((c) => {
     return c.sigle === req.body.sigle;
   });
-  if (!cours) return res.send("Ce cours n'existe pas");
+  if (!cours) return res.status(400).send("Ce cours n'existe pas");
   cours.credits = req.body.credits;
   res.send("Cours modifié");
 });
