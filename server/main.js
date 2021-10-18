@@ -7,7 +7,7 @@ app.use(cors());
 const urlencodedParser = express.urlencoded({ extended: false });
 app.use(express.json());
 
-const listeDeCours = [
+let listeDeCours = [
   { sigle: "LOG2990", credits: 4 },
   { sigle: "LOG4420", credits: 3 },
   { sigle: "LOG1000", credits: 3 },
