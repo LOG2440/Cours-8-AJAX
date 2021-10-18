@@ -32,9 +32,41 @@ function init() {
 }
 
 // TODO : supprimer un cours en fonction de son sigle et afficher le message dans le span span-delete-result
-function supprimerCours() {}
+function supprimerCours() {
+  const cours = document.getElementById("input-delete-class").value;
+  if (cours) {
+    const opts = {
+      method: "DELETE",
+    };
+    const url = `${SERVER_URL}/supprimerCours/${cours}`;
+    fetch(url, opts)
+      .then((res) => res.text())
+      .then((message) => {
+        document.getElementById("span-delete-result").textContent = message;
+        init();
+      });
+  }
+}
 
 // TODO : modifier le nombre de crédit d'un cours en fonction de son sigle et afficher le message dans le span span-modify-result
-function modifierCours() {}
+function modifierCours() {
+  const sigle = document.getElementById("input-modify-class").value;
+  const credits = document.getElementById("input-modify-credits").value;
+  if (sigle && credits) {
+    const cours = { sigle: sigle, credits: credits };
+    const opts = {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(cours),
+    };
+    const url = `${SERVER_URL}/modifierCours`;
+    fetch(url, opts)
+      .then((res) => res.text())
+      .then((message) => {
+        document.getElementById("span-modify-result").textContent = message;
+        init();
+      });
+  }
+}
 
 window.onload = init;
