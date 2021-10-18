@@ -31,4 +31,10 @@ function init() {
     .then((cours) => obtenirCours(cours));
 }
 
+// TODO : supprimer un cours en fonction de son sigle et afficher le message dans le span span-delete-result
+function supprimerCours() {}
+
+// TODO : modifier le nombre de crédit d'un cours en fonction de son sigle et afficher le message dans le span span-modify-result
+function modifierCours() {}
+
 window.onload = init;

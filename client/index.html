@@ -2,22 +2,34 @@
 <document>
   <head>
     <title>Exemple d'AJAX</title>
+    <!-- <script defer src="xhr_exemple.js"></script> -->
+    <script defer src="fetch_exemple.js"></script>
   </head>
   <body>
     <main>
       <h1>COURS</h1>
-      <div id="cours-container"></div>
+      <div id="class-container"></div>
       <hr />
       <label for="btn-add-class">Ajouter un cours aléatoire : </label>
       <button id="btn-add-class" onclick="ajouterCours()">Ajouter cours</button>
       <hr />
-      <section id="cours-modification">
-        <label for="input-delete-class">Cours à supprimer : </label>
-        <input id="input-delete-class" type="text" />
-        <button id="btn-delete-class" onclick="supprimerCours()">Supprimer le cours</button>
+      <section id="class-modification">
+        <div id="class-delete">
+          <label for="input-delete-class">Cours à supprimer : </label>
+          <input id="input-delete-class" type="text" />
+          <button id="btn-delete-class" onclick="supprimerCours()">Supprimer le cours</button>
+          <span id="span-delete-result"></span>
+        </div>
+        <hr />
+        <div id="class-modify">
+          <label for="input-modify-class">Cours à modifier : </label>
+          <input id="input-modify-class" type="text" />
+          <label for="input-modify-class">Nouveau nombre de crédits : </label>
+          <input id="input-modify-class" type="number" min="1" max="5" value="3" />
+          <button id="btn-delete-class" onclick="modifierCours()">Modifier le cours</button>
+          <span id="span-modify-result"></span>
+        </div>
       </section>
     </main>
-    <!-- <script src="xhr_exemple.js"></script> -->
-    <script src="fetch_exemple.js"></script>
   </body>
 </document>
