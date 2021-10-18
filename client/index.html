@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<document>
+  <head>
+    <title>Exemple d'AJAX</title>
+  </head>
+  <body>
+    <main>
+      <h1>COURS</h1>
+      <div id="cours-container"></div>
+      <hr />
+      <label for="btn-add-class">Ajouter un cours aléatoire : </label>
+      <button id="btn-add-class" onclick="ajouterCours()">Ajouter cours</button>
+      <hr />
+      <section id="cours-modification">
+        <label for="input-delete-class">Cours à supprimer : </label>
+        <input id="input-delete-class" type="text" />
+        <button id="btn-delete-class" onclick="supprimerCours()">Supprimer le cours</button>
+      </section>
+    </main>
+    <!-- <script src="xhr_exemple.js"></script> -->
+    <script src="fetch_exemple.js"></script>
+  </body>
+</document>
