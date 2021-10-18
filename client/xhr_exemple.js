@@ -2,7 +2,7 @@ const SERVER_URL = "http://localhost:5000";
 
 function obtenirCours() {
   const cours = Array.from(JSON.parse(this.response));
-  const container = document.getElementById("cours-container");
+  const container = document.getElementById("class-container");
   container.innerHTML = ""; // on vide le conteneur
   cours.forEach((c) => {
     const cours_paragraph = document.createElement("p");
