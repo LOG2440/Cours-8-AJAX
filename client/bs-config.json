@@ -1,0 +1,13 @@
+{
+    "port": 5010,
+    "files": [
+        "./*.{html,htm,css,js}"
+    ],
+    "server": {
+        "baseDir": "./"
+    },
+    "ghostMode": false,
+    "watchOptions": {
+        "ignored": "node_modules"
+    }
+}
