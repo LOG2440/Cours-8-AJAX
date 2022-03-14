@@ -1,11 +1,15 @@
 const express = require("express");
 const cors = require("cors");
+const profRouter = require("./prof");
 const port = 5000;
 
 const app = express();
+
 app.use(cors());
 const urlencodedParser = express.urlencoded({ extended: false });
 app.use(express.json());
+
+app.use("/prof", profRouter.router);
 
 let listeDeCours = [
   { sigle: "LOG2990", credits: 4 },
