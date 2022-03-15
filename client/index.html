@@ -7,28 +7,53 @@
   </head>
   <body>
     <main>
-      <h1>COURS</h1>
-      <div id="class-container"></div>
-      <hr />
-      <label for="btn-add-class">Ajouter un cours aléatoire : </label>
-      <button id="btn-add-class" onclick="ajouterCours()">Ajouter cours</button>
-      <hr />
-      <section id="class-modification">
-        <div id="class-delete">
-          <label for="input-delete-class">Cours à supprimer : </label>
-          <input id="input-delete-class" type="text" />
-          <button id="btn-delete-class" onclick="supprimerCours()">Supprimer le cours</button>
-          <span id="span-delete-result"></span>
-        </div>
+      <section id="class-section">
+        <h1>COURS</h1>
+        <div id="class-container"></div>
         <hr />
-        <div id="class-modify">
-          <label for="input-modify-class">Cours à modifier : </label>
-          <input id="input-modify-class" type="text" />
-          <label for="input-modify-class">Nouveau nombre de crédits : </label>
-          <input id="input-modify-credits" type="number" min="1" max="5" value="3" />
-          <button id="btn-delete-class" onclick="modifierCours()">Modifier le cours</button>
-          <span id="span-modify-result"></span>
-        </div>
+        <label for="btn-add-class">Ajouter un cours aléatoire : </label>
+        <button id="btn-add-class" onclick="ajouterCours()">Ajouter cours</button>
+        <hr />
+        <section id="class-modification">
+          <div id="class-delete">
+            <label for="input-delete-class">Cours à supprimer : </label>
+            <input id="input-delete-class" type="text" />
+            <button id="btn-delete-class" onclick="supprimerCours()">Supprimer le cours</button>
+            <span id="span-delete-result"></span>
+          </div>
+          <hr />
+          <div id="class-modify">
+            <label for="input-modify-class">Cours à modifier : </label>
+            <input id="input-modify-class" type="text" />
+            <label for="input-modify-class">Nouveau nombre de crédits : </label>
+            <input id="input-modify-credits" type="number" min="1" max="5" value="3" />
+            <button id="btn-delete-class" onclick="modifierCours()">Modifier le cours</button>
+            <span id="span-modify-result"></span>
+          </div>
+        </section>
+      </section>
+      <section id="prof-section">
+        <h1>PROFESSEURS</h1>
+        <hr />
+        <label for="btn-get-all-prof">Obtenir tous les professeurs : </label>
+        <button id="btn-get-all-prof" onclick="obtenirProfs()">Obtenir les professeurs</button>
+        <div id="prof-container"></div>
+        <hr />
+        <section id="prof-query">
+          <div>
+            <label for="input-prof-name">Obtenir un professeur à partir du nom de famille :</label>
+            <input id="input-prof-name" type="text" />
+            <button id="btn-prof-name" onclick="obtenirParNom()">Obtenir le professeur</button>
+            <span id="span-prof-name-result"></span>
+          </div>
+          <hr />
+          <div>
+            <label for="input-prof-resp">Obtenir le responsable d'un cours par sigle :</label>
+            <input id="input-prof-resp" type="text" />
+            <button id="btn-prof-resp" onclick="obtenirParSigle()">Obtenir le responsable</button>
+            <span id="span-prof-resp-result"></span>
+          </div>
+        </section>
       </section>
     </main>
   </body>
