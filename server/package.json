@@ -1,15 +1,15 @@
 {
   "name": "server",
-  "version": "1.0.0",
-  "description": "Simple server with comments",
+  "version": "1.2.0",
+  "description": "Serveur avec des exemples de méthodes HTTP",
   "main": "main.js",
   "scripts": {
     "start": "node main.js"
   },
-  "author": "",
+  "author": "Nikolay Radoev",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "express": "^4.21.2"
   }
 }
