@@ -23,7 +23,6 @@ let listeDeCours = [
  */
 
 
-
 /**
  * @swagger
  * /cours:
@@ -112,7 +111,7 @@ router.get("/:sigle", function (req, res) {
  *              example: "Le cours existe déjà"
  */
 router.post("/", function (req, res) {
-    if (!req.body) return res.sendStatus(400);
+    if (!req.body.sigle || !req.body.credits) return res.sendStatus(400);
     if (listeDeCours.find((c) => c.sigle === req.body.sigle)) {
         return res.status(409).send("Le cours existe déjà");
     }
