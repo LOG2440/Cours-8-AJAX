@@ -78,7 +78,7 @@ router.get("/:sigle", function (req, res) {
     const cours = listeDeCours.find((c) => {
         return c.sigle === req.params.sigle;
     });
-    res.send(cours);
+    res.json(cours);
 });
 
 /**
