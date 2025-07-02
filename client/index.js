@@ -1,8 +1,8 @@
-const SERVER_URL = "http://localhost:5000";
+const SERVER_URL = "http://localhost:5000/cours";
 
 function obtenirCours(cours) {
   const container = document.getElementById("class-container");
-  container.innerHTML = ""; // on vide le conteneur
+  container.innerHTML = "";
   cours.forEach((c) => {
     let cours_paragraph = document.createElement("p");
     cours_paragraph.innerHTML = `<p>${c.sigle} : ${c.credits}</p>`;
@@ -11,7 +11,7 @@ function obtenirCours(cours) {
 }
 
 function ajouterCours() {
-  const sigle = Math.floor(Math.random() * 6000 + 1000);
+  const sigle = (document.getElementById("input-add-class").value.substring(0, 4)).padEnd(4, "0");
   const credits = Math.floor(Math.random() * 5 + 1);
   const cours = { sigle: `INF${sigle}`, credits: credits };
 
@@ -20,35 +20,37 @@ function ajouterCours() {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(cours),
   };
-  const url = `${SERVER_URL}/ajouterCours`;
-  fetch(url, opts).then(() => init());
+  const url = `${SERVER_URL}`;
+  fetch(url, opts).then((res) => {
+    const spanAddResult = document.getElementById("span-add-result");
+    spanAddResult.textContent = res.status === 409 ? "Le cours existe déjà." : "";
+    init();
+  });
 }
 
 function init() {
-  const url = `${SERVER_URL}/obtenirCours`;
-  fetch(url)
+  const url = `${SERVER_URL}`;
+  fetch(url) // Méthode GET par défaut
     .then((response) => response.json())
     .then((cours) => obtenirCours(cours));
 }
 
-// TODO : supprimer un cours en fonction de son sigle et afficher le message dans le span span-delete-result
 function supprimerCours() {
   const cours = document.getElementById("input-delete-class").value;
   if (cours) {
     const opts = {
       method: "DELETE",
     };
-    const url = `${SERVER_URL}/supprimerCours/${cours}`;
+    const url = `${SERVER_URL}/${cours}`;
     fetch(url, opts)
-      .then((res) => res.text())
-      .then((message) => {
-        document.getElementById("span-delete-result").textContent = message;
+      .then((res) => {
+        const spanDeleteResult = document.getElementById("span-delete-result");
+        spanDeleteResult.textContent = res.status === 204 ? "Cours supprimé." : "Echec de suppression : cours introuvable dans la liste";
         init();
       });
   }
 }
 
-// TODO : modifier le nombre de crédit d'un cours en fonction de son sigle et afficher le message dans le span span-modify-result
 function modifierCours() {
   const sigle = document.getElementById("input-modify-class").value;
   const credits = document.getElementById("input-modify-credits").value;
@@ -59,7 +61,7 @@ function modifierCours() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(cours),
     };
-    const url = `${SERVER_URL}/modifierCours`;
+    const url = `${SERVER_URL}`;
     fetch(url, opts)
       .then((res) => res.text())
       .then((message) => {
@@ -69,4 +71,4 @@ function modifierCours() {
   }
 }
 
-window.onload = init;
+init();
