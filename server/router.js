@@ -73,11 +73,16 @@ router.get("/", function (req, res) {
  *                      example:
  *                          sigle: "LOG2990"
  *                          credits: 4
+ *          404:
+ *              description: Le cours spécifique n'est pas trouvé
  */
 router.get("/:sigle", function (req, res) {
     const cours = listeDeCours.find((c) => {
         return c.sigle === req.params.sigle;
     });
+    if (!cours) {
+        return res.sendStatus(404);
+    }
     res.json(cours);
 });
 
